@@ -1,0 +1,34 @@
+public static void minimumCoins(int cents)
+        {
+            double counter = 0.0;
+            double total = 0.0;
+            int quarter = 25;
+            int dime = 10;
+            int nickel = 5;
+            if(cents == 0 | cents < 0 ){
+                Console.WriteLine(0);
+            }
+            double centAmount = Convert.ToDouble(cents);
+            while (centAmount > 0){
+                while(centAmount >= quarter){
+                    counter = Math.Floor(centAmount / quarter);
+                    total = counter;
+                    centAmount = centAmount - (counter*quarter);
+                    counter = 0;
+                }
+                while (centAmount >= dime){
+                    counter += Math.Floor(centAmount / dime);
+                    centAmount = centAmount - (counter*dime);
+                    total += counter;
+                    counter = 0;
+                }
+                while (centAmount >= nickel){
+                    counter += Math.Floor(centAmount / nickel);
+                    centAmount = centAmount - (counter*nickel);
+                    total += counter;
+                }
+                total += centAmount;
+                centAmount = 0;
+            }
+            Console.WriteLine(total);      
+        }
